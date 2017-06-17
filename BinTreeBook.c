@@ -55,7 +55,7 @@ void PostOrderLoop(BTNode *b)
 			while(top != -1 && flag)
 			{
 				b = St[top];
-				if(b->rchild ==p)
+				if(b->rchild ==p)	// b的右孩子节点刚才被访问,那么此时可以访问 b 节点
 				{
 					printf("%c\n", b->data);	top--;	p = b;
 				}
