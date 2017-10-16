@@ -1,3 +1,7 @@
+// 1 建堆(make heap)
+// 2 选择最大(小) 元素，()
+// 3 再调整堆(sift_down)
+
 #include <stdio.h>
 #define N 10
 typedef int ElemType;
@@ -10,7 +14,7 @@ int main(void)
 	int i = N / 2, sorted_i = N;
 	make_heap(A, 10); // construct a heap
 
-	while(sorted_i) // iterate t array, find the smallest elems
+	while(sorted_i) // iterate the array, find the smallest elems
 	{
 		A[0] = A[1]; A[1] = A[sorted_i]; A[sorted_i] = A[0];
 		sorted_i--;
@@ -49,8 +53,8 @@ void make_heap(ElemType *A, int n)
 	}
 }
 
-void sift_down(ElemType *A, int p, int n)
-{
+void sift_down_small(ElemType *A, int p, int n)
+{//小跟堆
 	int  t, son; 
 	while(p * 2 <= n)
 	{
@@ -63,5 +67,21 @@ void sift_down(ElemType *A, int p, int n)
 			t = A[p]; A[p] = A[son]; A[son] = t;
 		}
 		p = son;
+	}
+}
+void sift_down(ElemType *A, int p, int n)
+{//大根堆
+	int son, t;
+	while(2*p <= n)
+	{
+		son = 2*p;
+		if(son < n && A[son+1] > A[son])
+			son++;
+		if(A[p] < A[son])
+		{
+			t = A[p]; A[p] = A[son]; A[son] = t;
+		}
+		p = son;
+
 	}
 }
