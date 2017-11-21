@@ -1,5 +1,5 @@
 // 1 建堆(make heap)
-// 2 选择最大(小) 元素，()
+// 2 选择最大(小) 元素
 // 3 再调整堆(sift_down)
 
 #include <stdio.h>
