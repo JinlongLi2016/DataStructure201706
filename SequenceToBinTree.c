@@ -6,7 +6,7 @@
 BinTree ConstructBinTree(char preS[], psi, inS[], isi, num)
 {// preS[] inS[] contains the traversing sequence
 // psi: preS[] preSequence starting index while isi means inS[] starting index
-// num: the number of following elements 
+// num: the number of following elements, including(preS[psi] and inS[isi])
 	if(num == 0)	return NULL;
 	else if(num == 1)
 	{
@@ -20,10 +20,14 @@ BinTree ConstructBinTree(char preS[], psi, inS[], isi, num)
 			if(preS[psi] == inS[isi + i])
 				break;
 		}
+		//构造根节点
 		T = (BinTree)malloc(sizeof(TreeNode));
 		T->Data = preS[psi];
-		T->Left = ConstructBinTree(preS, psi+1, inS, isi, i);//这里有点问题i or i-1
-		T->Right = ConstructBinTree(preS, psi+i+1， inS, isi+i+1, num - i);
+
+		//先序遍历中,[psi+1, psi+i](.py format)为左子树部分; 中序遍历中,[ini, isi+i]为左子树部分
+		T->Left = ConstructBinTree(preS, psi+1, inS, isi, i);
+		//[psi+i+1]为左子树部分;[ini, isi+i+1]为左子树部分
+		T->Right = ConstructBinTree(preS, psi+i+1， inS, isi+i+1, num - i - 1);
 		return T;
 	}
 }
@@ -44,7 +48,7 @@ BinTree ConstructBinTree(leverlS, lsi, inS, isi, num)
 				break
 		T = (BinTree)malloc(sizeof(TreeNode));
 		T->Data = leverlS[lsi];
-		// re-organize the leverS 
+		// rearrange the leverS order 
 		int j1, j2; j1=j2=0; j2++;
 		while(j2 < num)
 		{
@@ -62,4 +66,15 @@ BinTree ConstructBinTree(leverlS, lsi, inS, isi, num)
 
 		T->Left = ConstructBinTree(leverS, lsi+1, inS, isi, i);
 		T->Right = ConstructBinTree(leverS, lsi+i+1, inS, isi+i+1, num-1-i);
+
+}
+
+bool InSequence(obj, S, si, num)
+{// obj: 待查找的字符
+// S: 字符串   si: starting index 
+// num: the number of elements counting from si [si, si+num](.py list format)
+	for(int i=0; i < num; i++)
+		if(S[si + i] == obj)
+			return TRUE;
+	return FALSE;
 }
