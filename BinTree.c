@@ -54,7 +54,7 @@ void InOrderTraversalLoop( BinTree BT)
 {
 	BinTree T = BT;
 	Stack S = CreateStack( MaxSize);// Create and Initialize t_stack
-	while(T || IsEmpty(S)){
+	while(T || !IsEmpty(S)){
 		while(T){
 			Push(S, T);
 			T = T->Left;
