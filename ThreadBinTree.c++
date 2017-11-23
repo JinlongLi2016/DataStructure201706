@@ -31,6 +31,17 @@ void InThread(ThreadTree &t, ThreadTree &pre)
 	}
 }
 
+void CreatInThread(ThreadTree T)
+{
+	pre = NULL;
+	if(T != NULL)			//非空二叉树线索化
+	{
+		InThread(T, pre);	//中序线索化
+		pre->ltag = 1;		//处理最后面一个节点
+		pre->lchild = NULL;
+	}
+}
+
 // 遍历中序线索二叉树
 void TraverseInThreadTree(ThreadTree &p)
 {
