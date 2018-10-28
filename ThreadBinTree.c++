@@ -37,7 +37,7 @@ void CreatInThread(ThreadTree T)
 	if(T != NULL)			//非空二叉树线索化
 	{
 		InThread(T, pre);	//中序线索化
-		pre->ltag = 1;		//处理最后面一个节点
+		pre->ltag = 1;		//处理最后一个节点
 		pre->lchild = NULL;
 	}
 }
