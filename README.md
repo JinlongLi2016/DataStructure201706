@@ -5,4 +5,4 @@
 ![img](./mindmap.png)
 
 ## 思维导图 2
-![img](./mindmap2.png)
+![img](./mingmap2.png)
