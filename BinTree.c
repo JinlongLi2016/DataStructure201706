@@ -59,11 +59,14 @@ void InOrderTraversalLoop( BinTree BT)
 			Push(S, T);
 			T = T->Left;
 		}
-		if(!IsEmpty(S)){
-			T = Pop(S);
-			printf("%5d", T->Data); // access data
-			T = T->Right; // turn to the right tree
-		}
+// 		if(!IsEmpty(S)){   // 这里的判断是否多余了？
+// 			T = Pop(S);
+// 			printf("%5d", T->Data); // access data
+// 			T = T->Right; // turn to the right tree
+// 		}
+		T = Pop(S);
+		printf("%5d", T->Data);
+		T = T->Right;
 	}
 }
 
